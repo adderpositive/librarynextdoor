@@ -1,0 +1,6 @@
+*/**/.DS_Store
+node_modules
+_materials
+.DS_Store
+production/*
+!production/wp-content
