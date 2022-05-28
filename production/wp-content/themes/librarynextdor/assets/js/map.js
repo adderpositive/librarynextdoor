@@ -29,7 +29,7 @@ výzvy
         L.marker(library.latlng).addTo(map)
           .bindPopup(`
             ${library.title} <br />
-            ${library.content} 
+            ${library.content ? library.content : ''} 
             <b>City size:</b> ${library.citySize} <br />
             <b>Type:</b> ${library.type}<br /> 
           `)
