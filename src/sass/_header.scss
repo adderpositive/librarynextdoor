@@ -1,0 +1,46 @@
+.header {
+  background-color: $blue-beta;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1530px;
+  padding: 18px 30px;
+}
+
+.header__logo {
+  height: 44px;
+  flex: none;
+
+  img {
+    height: 100%;
+  }
+}
+
+.header-menu {
+  display: flex;
+  justify-content: flex-end;
+  flex: auto;
+  padding-left: 30px;
+
+  &__item {
+    margin-left: 64px;
+    
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__link {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $white-alfa;
+    transition: color .2s;
+
+    &:hover {
+      color: $green-alfa;
+    }
+  }
+}

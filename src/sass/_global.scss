@@ -1,0 +1,103 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-size: 1rem;
+  font-family: $font-alfa;
+  color: $blue-beta;
+  font-weight: 400;
+  scroll-behavior: smooth;
+}
+
+b, strong {
+  font-weight: 700;
+}
+
+i, em {
+  font-style: italic;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*
+*   Remove ugly outline of inputs
+*/
+input,
+input[type="submit"],
+button,
+textarea {
+  -webkit-appearance: none;
+  border-radius: 0;
+  outline: 0;
+}
+
+input[type="submit"],
+button {
+  border: 0;
+
+  &:focus {
+      outline: 0;
+  }
+}
+
+.table-wrap{
+  overflow: auto;
+}
+
+.hidden{
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.inner {
+  max-width: 750;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.heading {
+  font-size: 5.4rem;
+  line-height: 1.11;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: $green-alfa;
+}
+
+.paragraph {
+  font-size: 1.8rem;
+  line-height: 1.55;
+}
+
+@include mq(lg) {
+
+}
+
+@include mq(md) {
+
+}
+
+@include mq(sm) {
+
+}
+
+@include mq(xs) {
+
+}

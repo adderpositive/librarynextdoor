@@ -4,3 +4,5 @@ _materials
 .DS_Store
 production/*
 !production/wp-content
+dist
+.parcel-cache
