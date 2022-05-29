@@ -7,11 +7,9 @@ add_theme_support( 'post-thumbnails' );
 
 function enqueue_styles() {
 
-    wp_enqueue_style( 'styles', get_stylesheet_uri() );
-
     if ( !is_admin() ) {
         wp_enqueue_style('map-plugin',  'https://unpkg.com/leaflet@1.8.0/dist/leaflet.css', [], version, 'all');
-        wp_enqueue_style('map', get_stylesheet_directory_uri() . '/assets/css/map.css', [], version, 'all');
+        wp_enqueue_style('style', get_stylesheet_directory_uri() . '/assets/css/style.css', [], version, 'all');
     }
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_styles');

@@ -1,4 +1,7 @@
 <?php
+/*
+Template Name: Map
+*/
 
 $librariesArgs = array(
   'post_type' => 'library',
