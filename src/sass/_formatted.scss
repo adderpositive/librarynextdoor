@@ -1,0 +1,187 @@
+.formatted {
+
+  h1 {
+
+    &.formatted__heading {
+      font-weight: 800;
+      font-size: 4.8rem;
+      color: $blue-beta;
+      text-align: center;
+      padding: 50px 0;
+    }
+
+    .wp-block-image {
+
+      img {
+        display: block;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
+  img {
+    margin-top: 23px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 3.6rem;
+    padding: 30px 0;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 3rem;
+    padding: 20px 0;
+  }
+
+  h4 {
+    font-weight: 600;
+    font-size: 2.6rem;
+    padding: 10px 0;
+  }
+
+  h5,
+  h6 {
+    font-weight: 600;
+    font-size: 2rem;
+    padding: 5px 0;
+  }
+
+  ul li,
+  ol li,
+  p {
+    font-size: 1.8rem;
+    line-height: 1.55;
+  }
+
+  ul,
+  ol,
+  p {
+    margin-bottom: 30px;
+  }
+
+  ul,
+  ol {
+    padding-top: 10px;
+    padding-left: 20px;
+  }
+
+  ul li {
+    padding-bottom: 3px;
+    list-style: disc;
+  }
+
+  ol li {
+    list-style: decimal;
+  }
+
+  p {
+
+    i,
+    em {
+      font-style: italic;
+    }
+
+    small {
+      font-size: .888em;
+    }
+  }
+
+  a {
+    color: $green-alfa;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  figure {
+    padding-bottom: 20px;
+  }
+
+  figcaption {
+    font-size: 1.2rem;
+    padding-top: 15px;
+    padding-left: 10px;
+    max-width: 460px;
+  }
+
+  blockquote {
+    margin-top: 25px;
+    margin-bottom: 40px;
+    padding: 15px 0 15px 15px;
+    padding-left: 15px;
+    border-left: 5px solid $black-alfa;
+
+    p {
+      margin: 0;
+      padding: 0;
+      font-size: 1.6rem;
+    }
+  }
+
+  .wp-block-columns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 730px;
+  }
+
+.wp-block-column {
+  width: 45%;
+
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+.wp-block-column:first-child {
+  width: 52%;
+}
+
+.wp-block-column:nth-child(2) {
+  padding-left: 3.4%;
+  padding-top: 25px;
+}
+
+  .wp-block-separator {
+    height: auto;
+    border: none;
+    margin: 0;
+
+    &::before {
+        content: "...";
+        display: block;
+        padding: 5px 0 15px;
+        font-size: 2.8rem;
+        text-align: center;
+        letter-spacing: .2em;
+        opacity: .8;
+    }
+  }
+
+  .wp-block-embed__wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.5%;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.formatted__inner {
+
+}

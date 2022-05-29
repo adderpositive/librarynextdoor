@@ -6,3 +6,39 @@
 .intro__inner {
   text-align: center;
 }
+
+.links {
+  background-color: $green-alfa;
+}
+
+.links__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center ;
+  max-width: 1216px;
+  position: relative;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.links__item {
+  margin: 8px;
+  flex: none;
+}
+
+.links__link {
+  display: flex;
+  font-weight: 700;
+  font-size: 1.7rem;
+  color: $white-alfa;
+  padding: 10px;
+  border: 2px solid $white-alfa;
+  border-radius: 6px;
+  transition: color .2s, border-color .2s;
+
+  &:hover,
+  &.is-active {
+    border-color: $blue-alfa;
+    color: $blue-alfa;
+  }
+}
