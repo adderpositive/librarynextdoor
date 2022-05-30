@@ -1,11 +1,5 @@
 <?php
 
-$parent_page_id = ( '0' != $post->post_parent ? $post->post_parent : $post->ID );
-// Get child pages as array
-$page_tree_array = get_pages( array(
-  'child_of' => $parent_page_id
-) );
-
 get_header();
 
 global $wp;
@@ -18,7 +12,13 @@ global $wp;
     </div>
   </section>
 
-  <?php 
+  <?php
+    $parent_page_id = ( '0' != $post->post_parent ? $post->post_parent : $post->ID );
+    // Get child pages as array
+    $page_tree_array = get_pages( array(
+      'child_of' => $parent_page_id
+    ) );
+
     if ($page_tree_array) : 
   ?>
   <div class="links">
@@ -36,6 +36,7 @@ global $wp;
   </div>
   <?php 
     endif;
+    wp_reset_postdata(); 
   ?>
   <div class="formatted">
     <div class="inner formatted__inner">
