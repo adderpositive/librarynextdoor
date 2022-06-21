@@ -130,25 +130,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 730px;
   }
 
-.wp-block-column {
-  width: 45%;
+  .wp-block-column {
+    flex: 1 1 0;
+    width: 0;
 
-  p {
-    font-size: 1.2rem;
+    figcaption {
+      text-align: center;
+    }
   }
-}
-
-.wp-block-column:first-child {
-  width: 52%;
-}
-
-.wp-block-column:nth-child(2) {
-  padding-left: 3.4%;
-  padding-top: 25px;
-}
 
   .wp-block-separator {
     height: auto;
@@ -180,8 +171,143 @@
       height: 100%;
     }
   }
+
+  .wp-block-file a {
+    font-size: 1.6rem;
+  }
 }
 
 .formatted__inner {
 
+}
+
+.wp-block-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@include mq(sm) {
+  .formatted {
+
+    h1.formatted__heading {
+      font-size: 4rem;
+      padding: 40px 0;
+    }
+
+    h2 {
+      font-size: 3rem;
+      padding: 20px 0;
+    }
+  
+    h3 {
+      font-size: 2.5rem;
+      padding: 10px 0;
+    }
+  
+    h4 {
+      font-size: 2.1rem;
+      padding: 8px 0;
+    }
+  
+    h5,
+    h6 {
+      font-size: 1.6rem;
+      padding: 3px 0;
+    }
+  
+    ul li,
+    ol li,
+    p {
+      font-size: 1.6rem;
+    }
+
+    ul,
+    ol,
+    p {
+      margin-bottom: 20px;
+    }
+
+    ul,
+    ol {
+      padding-top: 10px;
+      padding-left: 15px;
+    }
+
+    img {
+      margin-top: 20px;
+    }
+  }
+}
+
+
+@include mq(xs) {
+  .formatted {
+
+    h1.formatted__heading {
+      font-size: 3rem;
+      padding: 25px 0;
+    }
+
+    h2 {
+      font-size: 2.4rem;
+      padding: 15px 0;
+    }
+  
+    h3 {
+      font-size: 2rem;
+      padding: 10px 0;
+    }
+  
+    h4 {
+      font-size: 1.7rem;
+      padding: 5px 0;
+    }
+  
+    h5,
+    h6 {
+      font-weight: 600;
+      font-size: 1.4rem;
+      padding: 0;
+    }
+  
+    ul li,
+    ol li,
+    p {
+      font-size: 1.4rem;
+    }
+
+    ul,
+    ol,
+    p {
+      margin-bottom: 10px;
+    }
+
+    ul,
+    ol {
+      padding-top: 5px;
+      padding-left: 12px;
+    }
+
+    img {
+      margin-top: 10px;
+    }
+
+    .wp-block-columns {
+      flex-wrap: wrap;
+    
+      .wp-block-column {
+        flex: none;
+        width: 50%;
+  
+        figure {
+  
+          a {
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
 }

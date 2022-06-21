@@ -42,3 +42,36 @@
     color: $blue-alfa;
   }
 }
+
+@include mq(sm) {
+  .intro {
+    background-color: $blue-beta;
+    padding: 15px 0 65px;
+  }
+
+  .links__item {
+    margin: 6px;
+  }
+
+  .links__link {
+    font-size: 1.5rem;
+    padding: 8px;
+  }
+}
+
+@include mq(xs) {
+  .intro {
+    background-color: $blue-beta;
+    padding: 15px 0 50px;
+  }
+
+  .links__item {
+    margin: 4px;
+  }
+
+  .links__link {
+    font-size: 1.3rem;
+    padding: 5px 8px;
+    border-width: 1px;
+  }
+}

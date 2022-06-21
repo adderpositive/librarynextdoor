@@ -17,7 +17,8 @@
     <header id="header" class="header">
         <div class="inner header__inner">
             <a class="header__logo" href="<?php echo home_url(); ?>">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logo.svg" alt="Logo | <?php get_bloginfo('name'); ?>">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logo.svg" alt="Logo | <?php get_bloginfo('name'); ?>">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/logo-mobile.svg" alt="Logo | <?php get_bloginfo('name'); ?>">
             </a>
             <ul class="header-menu">
                 <?php

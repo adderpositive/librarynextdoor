@@ -31,16 +31,20 @@
   }
 }
 
-.footer__heading,
-.footer-menu__link,
-.footer__paragraph {
+.footer__heading {
   font-size: 2rem;
+  line-height: 2;
+}
+
+.footer-menu__link,
+.footer__paragraph  {
+  font-size: 1.6rem;
   line-height: 2;
 }
 
 .footer__heading {
   font-weight: 700;
-  padding-bottom: 40px;
+  padding-bottom: 30px;
 }
 
 .footer-copy {
@@ -56,4 +60,62 @@
 .footer-copy__paragraph {
   font-size: 1.6rem;
   line-height: 1.2;
+}
+
+@include mq(sm) {
+  .footer {
+    padding-top: 70px;
+  }
+
+  .footer__col--1 {
+    padding-right: 3%;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .footer__heading {
+    font-size: 1.8rem;
+  }
+
+  .footer-menu__link,
+  .footer__paragraph  {
+    font-size: 1.4rem;
+  }
+}
+
+@include mq(xs) {
+  .footer {
+    padding-top: 40px;
+  }
+
+  .footer__inner {
+    padding-top: 30px;
+    flex-direction: column;
+  }
+
+  .footer__col {
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+  .footer__heading {
+    padding-bottom: 0;
+  }
+
+  .footer-copy {
+    flex-direction: column;
+  }
+
+  .footer-menu__link,
+  .footer__paragraph  {
+    font-size: 1.4rem;
+  }
+
+  .footer-copy__paragraph {
+    padding: 3px 0;
+    font-size: 1.4rem;
+    text-align: center;
+  }
 }

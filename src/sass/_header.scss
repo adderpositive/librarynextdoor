@@ -16,6 +16,10 @@
 
   img {
     height: 100%;
+
+    &:nth-child(2) {
+      display: none;
+    }
   }
 }
 
@@ -42,5 +46,48 @@
     &:hover {
       color: $green-alfa;
     }
+  }
+}
+
+@include mq(sm) {
+  .header__logo {
+    height: 34px;
+  }
+
+  .header-menu__item {
+    margin-left: 50px;
+  }
+
+  .header-menu__link {
+    font-size: 1.8rem;
+  }
+}
+
+@include mq(xs) {
+  .header__inner {
+    padding: 12px 15px;
+  }
+
+  .header__logo {
+  
+    img {
+  
+      &:nth-child(1) {
+        display: none;
+        position: absolute;
+      }
+
+      &:nth-child(2) {
+        display: block;
+      }
+    }
+  }
+
+  .header-menu__item {
+    margin-left: 32px;
+  }
+
+  .header-menu__link {
+    font-size: 1.8rem;
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-define( 'version',  '0.0.1' ); // time()
+define( 'version',  '0.0.2' ); // time()
 // define( 'app_url', 'https://man-credit-prod.herokuapp.com/api/public/lead' );
 
 add_theme_support( 'post-thumbnails' );

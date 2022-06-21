@@ -91,13 +91,19 @@ img {
 }
 
 @include mq(md) {
-
+  .heading {
+    font-size: 4.8rem;
+  }
 }
 
 @include mq(sm) {
-
+  .heading {
+    font-size: 4rem;
+  }
 }
 
 @include mq(xs) {
-
+  .heading {
+    font-size: 3rem;
+  }
 }
