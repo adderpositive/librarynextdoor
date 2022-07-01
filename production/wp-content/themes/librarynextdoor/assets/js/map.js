@@ -1,3 +1,56 @@
+/*
+(() => {
+  const $form = $('.js-form');
+  
+  function isEmailValid(email) {
+    var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
+    
+    if (reg.test(email)) {
+      return true;
+    }
+
+    return false;
+  }
+
+  if ($form.length) { 
+    $form.submit(function(e) {
+      // $('.w-form-fail').css({ position: 'absolute', top: -9999, left: -9999 });
+      const title = $('input[name="title"]').val();
+      // const email = $('input[name="email"]').val();
+      // const phone = $('input[name="phone"]').val();
+      // const id = $('input[name="id"]').val();
+
+      // const emailValidation = isEmailValid(email);
+      // if (emailValidation) {
+      $.ajax({
+        url: window.script_data.ajax_url,
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          action: 'create_post',
+          title: title,
+          _ajax_nonce: window.script_data.nonce
+        },
+        success: function (data) {            
+          if (data.type === 'success') {
+            console.log(data)
+          }
+        }
+      });
+      /* } else {
+        $('.w-form-fail')
+          .css({ position: 'static', top: 0, left: 0 })
+          .children('div')
+          .text($('.w-form-fail').data('error-email'));
+      }
+      
+
+      e.preventDefault();
+    });
+  }
+})();
+*/
+
 
 /*
   

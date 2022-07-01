@@ -22,6 +22,14 @@ function enqueue_scripts() {
         'ajax_url' => admin_url( 'admin-ajax.php' ),
         'nonce' => wp_create_nonce( 'nonce' ),
     );
+
+    wp_enqueue_script(
+        'jquery1',
+        'https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=61f3d19d266dc204d2d61f67',
+        [],
+        version,
+        true
+    );
     
     wp_enqueue_script(
         'map-plugin',
@@ -32,7 +40,7 @@ function enqueue_scripts() {
     );
 
     wp_enqueue_script(
-        'map',
+        'main-script',
         get_stylesheet_directory_uri() . '/assets/js/map.js',
         [],
         version,
@@ -112,14 +120,34 @@ function rezervaceData( ) {
 }
 
 add_action( 'rest_api_init', 'rezervaceData' );
+*/
 
-function send_mail( $data ) {
+function create_post( $data ) {
 
     check_ajax_referer( 'nonce' );
 
-    $to = 'adder10@gmail.com';
+    wp_insert_post(
+        array(
+            'post_title' => $_POST['title'],
+            'post_content' => $_POST['title'],
+            'post_type' => 'library',
+            'post_status' => 'draft'
+            // 'meta_input'   
+        )
+    );
 
-    // Subject
+
+    die();
+}
+
+add_action( 'wp_ajax_create_post', 'create_post' );
+add_action( 'wp_ajax_nopriv_create_post', 'create_post' );
+
+function send_email() {
+    /*
+
+     $to = 'adder10@gmail.com';
+        // Subject
     $subject = 'Rezervace ' . $_POST['name'];
 
     // Message
@@ -160,13 +188,10 @@ function send_mail( $data ) {
     } catch ( Exception $e)  {
         echo json_encode($e->getMessage());
     }
-
-    die();
+    */
 }
 
-add_action( 'wp_ajax_send_mail', 'send_mail' );
-add_action( 'wp_ajax_nopriv_send_mail', 'send_mail' );
-
+/*
 
 <?php
   function requestData($category) {
