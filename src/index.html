@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8"/>
     <title>My First Parcel App</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
     <link rel="stylesheet" href="../src/sass/style.scss" />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&display=swap" rel="stylesheet"> 
@@ -17,11 +19,15 @@
         <h1 class="heading">MATCH AND MEET YOUR PARTNER LIBRARY</h1>
       </div>
     </section>
+    <include src="./src/components/map.html"></include>
 
     <include src="./src/components/links.html"></include>
 
     <include src="./src/components/formatted-content.html"></include>
 
-    <include src="./src/components/footer.html"></include>
+    <include src="./src/components/footer.html"></include>s
+
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" type="text/javascript"></script>
+    <script src="../src/js/script.js" type="text/javascript"></script>
   </body>
 </html>

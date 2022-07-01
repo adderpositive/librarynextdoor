@@ -23,6 +23,7 @@ function enqueue_scripts() {
         'nonce' => wp_create_nonce( 'nonce' ),
     );
 
+    /*
     wp_enqueue_script(
         'jquery1',
         'https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=61f3d19d266dc204d2d61f67',
@@ -30,6 +31,7 @@ function enqueue_scripts() {
         version,
         true
     );
+    */
     
     wp_enqueue_script(
         'map-plugin',
