@@ -43,6 +43,14 @@
   }
 }
 
+.projects {
+
+}
+
+.projects-inner {
+  max-width: 1200px;
+}
+
 @include mq(sm) {
   .intro {
     background-color: $blue-beta;
