@@ -76,18 +76,38 @@ výzvy
     iconSize: [44, 44]
   });
 
+
   L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
+  
+
   libs.forEach((library) => {
     if (library.latlng && library.title && library.citySize && library.type && library.content) {
+      let tags = ''
+
+      if (library?.tags && library.tags.length) {
+        library.tags.forEach((item) => {
+          tags += `<span class='tag'>${item}</span>`
+        })
+      }
+
       L.marker(library.latlng, { icon: marker })
         .addTo(map)
         .bindPopup(`
           <div class="map-title">${library.title}</div>
-          <b>City size:</b> ${library.citySize} <br />
-          <b>Type:</b> ${library.type}<br /> 
+          <div class='map-content'>
+            <p class='map-par'>
+              ${library.address}
+            </p>
+            <b>City size:</b> ${library.citySize} <br />
+            <b>Type:</b> <span class='tag'>${library.type}</span><br /> 
+            <b>Tags:</b> ${tags}
+          </div>
+          <div class="button-wrap">
+            <a class="button" href="${library.url}">Detail</a>
+          </div>
         `)
         .openPopup()
     }

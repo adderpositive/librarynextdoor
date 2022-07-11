@@ -7,6 +7,19 @@
   text-align: center;
 }
 
+.intro-tags {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.intro__par {
+  text-align: center;
+  color: $white-alfa;
+  font-size: 2.2rem;
+  line-height: 1.5;
+  margin-top: 20px;
+}
+
 .links {
   background-color: $green-alfa;
 }
@@ -44,11 +57,80 @@
 }
 
 .projects {
-
+  padding-top: 40px;
 }
 
 .projects-inner {
   max-width: 1200px;
+}
+
+.projects__heading {
+  color: $blue-beta;
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.projects__wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.projects-item {
+  margin-top: 20px;
+  padding: 20px;
+  border: 2px solid $blue-alfa;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, .1);
+  width: 48.5%;
+
+  &--lib {
+    width: 100%;
+    border-color: $green-alfa;
+
+    .projects-item__heading {
+      color: $green-alfa;
+    }
+  }
+}
+
+.projects-item__heading {
+  font-size: 3.6rem;
+  font-weight: 700;
+}
+
+.projects-row {
+  margin-top: 10px;
+}
+
+.projects-row__title {
+  font-size: 1.6rem;
+  padding-bottom: 4px;
+}
+
+.projects-contact {
+  line-height: 1.3;
+  margin-top: 15px;
+}
+
+.projects-contact__title {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.projects-contact__par {
+  font-size: 1.6rem;
+
+  a:hover {
+    color: $green-alfa;
+  }
+}
+
+.projects__par {
+  font-size: 1.6rem;
+  margin-top: 15px;
+  line-height: 1.2;
 }
 
 @include mq(sm) {

@@ -49,10 +49,7 @@
     });
   }
 })();
-*/
-
-
-/*
+*/ /*
   
 výzvy
   1. Jak budeme centrovat mapu?
@@ -61,35 +58,47 @@ výzvy
   2. přidávání nových 
     - podle adresy nebo přímo GPS?
   
-*/
-
-(() => {
-  var map = L.map('map').setView([49.59268, 17.25819], 14 );
-
-  /*
-    MORE: 
-    https://wiki.openstreetmap.org/wiki/Tiles
-
-    Basic tile: https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png - basic
-  */
-  L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+*/ (()=>{
+  const libs = window.libraries;
+  const elMap = document.getElementById("map");
+  if (!elMap) return;
+  if (!libs || libs.length === 0) return;
+  const map = L.map("map").setView([
+      49.59268,
+      17.25819
+  ], 10);
+  const marker = new L.icon({
+      iconUrl: "https://www.librarynextdoor.net/wp-content/themes/librarynextdoor/assets/img/pin.png",
+      iconSize: [
+          44,
+          44
+      ]
+  });
+  L.tileLayer("https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
-
-  if (libraries && libraries.length) {
-    libraries.forEach((library) => {
+  libs.forEach((library)=>{
       if (library.latlng && library.title && library.citySize && library.type && library.content) {
-        L.marker(library.latlng).addTo(map)
-          .bindPopup(`
-            ${library.title} <br />
-            ${library.content ? library.content : ''} 
-            <b>City size:</b> ${library.citySize} <br />
-            <b>Type:</b> ${library.type}<br /> 
-          `)
-          .openPopup();
+          let tags = "";
+          if (library?.tags && library.tags.length) library.tags.forEach((item)=>{
+              tags += `<span class='tag'>${item}</span>`;
+          });
+          L.marker(library.latlng, {
+              icon: marker
+          }).addTo(map).bindPopup(`
+        <div class="map-title">${library.title}</div>
+        <div class='map-content'>
+          <p class='map-par'>
+            ${library.address}
+          </p>
+          <b>City size:</b> ${library.citySize} <br />
+          <b>Type:</b> <span class='tag'>${library.type}</span><br /> 
+          <b>Tags:</b> ${tags}
+        </div>
+        <div class="button-wrap">
+          <a class="button" href="${library.url}">Detail</a>
+        </div>
+      `).openPopup();
       }
-    });
-  }
-
- 
+  });
 })();
