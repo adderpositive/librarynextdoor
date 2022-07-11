@@ -1,7 +1,6 @@
 <?php
 
-define( 'version',  '0.0.2' ); // time()
-// define( 'app_url', 'https://man-credit-prod.herokuapp.com/api/public/lead' );
+define( 'version',  time() ); // time()
 
 add_theme_support( 'post-thumbnails' );
 
@@ -22,16 +21,6 @@ function enqueue_scripts() {
         'ajax_url' => admin_url( 'admin-ajax.php' ),
         'nonce' => wp_create_nonce( 'nonce' ),
     );
-
-    /*
-    wp_enqueue_script(
-        'jquery1',
-        'https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=61f3d19d266dc204d2d61f67',
-        [],
-        version,
-        true
-    );
-    */
     
     wp_enqueue_script(
         'map-plugin',
@@ -44,7 +33,7 @@ function enqueue_scripts() {
     wp_enqueue_script(
         'main-script',
         get_stylesheet_directory_uri() . '/assets/js/map.js',
-        [],
+        ['map-plugin'],
         version,
         true
     );
@@ -100,169 +89,3 @@ function create_posts() {
     );
 }
 add_action( 'init', 'create_posts' );
-
-/*
-function getData( object $data ) {
-    global $wpdb;
-
-    $tableName = $wpdb->prefix . "byty";
-
-    $results = $wpdb->get_results('SELECT * FROM ' . $tableName);
-
-    $response = json_encode( array('data' => $results) );
-   
-    return json_decode($response);
-}
-
-function rezervaceData( ) {
-    register_rest_route( 'data', '/data', array(
-		'methods'  => 'GET',
-		'callback' => 'getData'
-	) );
-}
-
-add_action( 'rest_api_init', 'rezervaceData' );
-*/
-
-function create_post( $data ) {
-
-    check_ajax_referer( 'nonce' );
-
-    wp_insert_post(
-        array(
-            'post_title' => $_POST['title'],
-            'post_content' => $_POST['title'],
-            'post_type' => 'library',
-            'post_status' => 'draft'
-            // 'meta_input'   
-        )
-    );
-
-
-    die();
-}
-
-add_action( 'wp_ajax_create_post', 'create_post' );
-add_action( 'wp_ajax_nopriv_create_post', 'create_post' );
-
-function send_email() {
-    /*
-
-     $to = 'adder10@gmail.com';
-        // Subject
-    $subject = 'Rezervace ' . $_POST['name'];
-
-    // Message
-    $message = '
-    <html>
-    <head>
-      <title>Rezervace - '. $_POST['name'] . '</title>
-    </head>
-    <body>
-        <div style="max-width: 700px; padding: 0 20px; margin: 50px auto 80px;">
-            <h1 style="font-size: 30px; text-align: center; padding-bottom: 20px;">Rezervační formulář '. $_POST['nameOrder'] . '</h1>
-            <hr />
-            <h2 style="font-size: 22px;">Údaje o oslavě</h2>
-            <p>Jméno: <b>' . $_POST['name'] . '</b></p>
-            <p>Email: <b>' . $_POST['email'] . '</b></p>
-            <p>Tel. č.: <b>' . $_POST['phone'] . '</b></p>
-    
-        </div>
-    </body>
-    </html>
-    ';
-
-    // To send HTML mail, the Content-type header must be set
-    $headers[] = 'MIME-Version: 1.0';
-    $headers[] = 'Content-type: text/html; charset=utf-8';
-    $headers[] = "From:<" . $_POST['email'] . ">\r\n";
-
-    // Mail it
-    try {
-        mail($to, $subject, $message, implode("\r\n", $headers));
-
-        echo json_encode(
-            array(
-                'type' => 'success'
-            )
-        );
-
-    } catch ( Exception $e)  {
-        echo json_encode($e->getMessage());
-    }
-    */
-}
-
-/*
-
-<?php
-  function requestData($category) {
-    $url = 'https://advertialabs.cz/advertia-admin/index.php/wp-json/wp/v2/' . $category;
-    // $url = 'http://admin.advertia.drdek.cz/index.php/wp-json/wp/v2/' . $category;
-
-    // create curl resource
-    $request = curl_init();
-
-    // set url
-    curl_setopt($request, CURLOPT_URL, $url);
-
-    //return the transfer as a string
-    curl_setopt($request, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($request, CURLOPT_FAILONERROR, true);
-
-    // $output contains the output string
-    $output = curl_exec($request);
-
-    if (curl_errno($request)) {
-      $error = curl_error($request);
-    }
-
-    // error from hr system
-    $json = json_decode($output, true);
-
-    // close curl resource to free up system resources
-    curl_close($request);
-
-    if (isset($error)) {
-      print_r($error);
-    }
-
-    return $json;
-  }
-
-  function requestDataAcf($category) {
-    $url = 'https://advertialabs.cz/advertia-admin/index.php/wp-json/acf/v3/' . $category;
-    $url = 'http://admin.advertia.drdek.cz/index.php/wp-json/acf/v3/' . $category;
-
-    // create curl resource
-    $request = curl_init();
-
-    // set url
-    curl_setopt($request, CURLOPT_URL, $url);
-
-    //return the transfer as a string
-    curl_setopt($request, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($request, CURLOPT_FAILONERROR, true);
-
-    // $output contains the output string
-    $output = curl_exec($request);
-
-    if (curl_errno($request)) {
-      $error = curl_error($request);
-    }
-
-    // error from hr system
-    $json = json_decode($output, true);
-
-    // close curl resource to free up system resources
-    curl_close($request);
-
-    if (isset($error)) {
-      print_r($error);
-    }
-
-    return $json;
-  }
-
-
-*/

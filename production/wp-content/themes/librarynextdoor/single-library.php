@@ -4,19 +4,72 @@ get_header();
 
 global $wp;
 
+/* 
+ 
+            Array
+            (
+                [0] => Array
+                    (
+                        [title] => Projekct první
+                        [website] => https://homolamartin.cz
+                        [contact_person] => Array
+                            (
+                                [full_name] => Martin Homola
+                                [email] => me@homolamartin.cz
+                                [phone_number] => +420727181921
+                            )
+            
+                        [topics] => Array
+                            (
+                                [0] => Kids
+                                [1] => Robotika
+                                [2] => Programování
+                            )
+            
+                        [info] => Toto je nový projekt
+                    )
+            
+            )
+            
+*/
+
+$projects = get_field('projects');
+$title = get_the_title();
+$content = get_the_content();
+$type = get_field('type');
+$citySize = get_field('city_size');
+$address = get_field('address');
+$link = get_field('link');
+
+$topics = array();
+
+foreach ($projects as $project) {
+  foreach ($project['topics'] as $topic) {
+    if (!in_array($topic, $topics)) {
+      array_push($topics, $topic);
+    }
+  }
+}
+
 ?>
 
   <section class="intro">
     <div class="inner intro__inner">
       <h1 class="heading"><?php the_title(); ?></h1>
       <div class="intro-tags">
-        <div class="tag tag--big">Udržitelnost</div>
-        <div class="tag tag--big">Komunita</div>
-        <div class="tag tag--big">Senioři</div>
+        <?php 
+          foreach ($topics as $topic):
+        ?>
+        <div class="tag tag--big"><?php echo $topic; ?></div>
+        <?php 
+          endforeach;
+        ?>
       </div>
       <div class="intro__par">
-        <a href="#">www.knihovna.xyz</a><br />
-        Mariánské náměstí 1/98, Praha 1<br /><br />
+        City size: <?php echo $citySize; ?><br />
+        Type: <?php echo $type; ?><br />
+        <a href="<?php echo $link; ?>" target='_blank'><?php echo $link; ?></a><br />
+        <?php echo $address['address']; ?><br /><br />
         <?php the_content(); ?>
       </div>
     </div>
@@ -26,40 +79,38 @@ global $wp;
   <section class="projects">
     <h2 class="projects__heading">Projects</h2>
     <div class="projects__wrap">
-      <article class="projects-item">
-        <h3 class="projects-item__heading">Název projektu</h3>
-        <div class="projects-row">
-          <span class="projects-row__title">Typ: </span>
-          <span class="tag">Komunita</span>
-          <span class="tag">Komunita</span>
-        </div>
-        <p class='projects__par'>Když se na něj klikne, tak se zobrazí popis projektu a kontaktní osoba.</p>
-        <div class="projects-contact">
-          <h4 class="projects-contact__title">Kontaktní osoba</h4>
-          <p class="projects-contact__par">
-            Martin Homola <br />
-            <a href="mailto:example@ez.com">example@ez.com</a><br />
-            <a href="tel:+420200200200">+420 200 200 200</a>
-          </p>
-        </div>
-      </article>
-      <article class="projects-item">
-        <h3 class="projects-item__heading">Název projektu</h3>
-        <div class="projects-row">
-          <span class="projects-row__title">Typ: </span>
-          <span class="tag">Komunita</span>
-          <span class="tag">Komunita</span>
-        </div>
-        <p class='projects__par'>Když se na něj klikne, tak se zobrazí popis projektu a kontaktní osoba.</p>
-        <div class="projects-contact">
-          <h4 class="projects-contact__title">Kontaktní osoba</h4>
-          <p class="projects-contact__par">
-            Martin Homola <br />
-            <a href="mailto:example@ez.com">example@ez.com</a><br />
-            <a href="tel:+420200200200">+420 200 200 200</a>
-          </p>
-        </div>
-      </article>
+      <?php 
+        foreach ($projects as $project):      
+      ?>
+        <article class="projects-item">
+          <h3 class="projects-item__heading"><?php echo $project['title']; ?></h3>
+          <div class="projects-row">
+            <span class="projects-row__title">Typ: </span>
+            <?php 
+              foreach ($project['topics'] as $topic):
+            ?>
+              <span class="tag"><?php echo $topic; ?></span>
+            <?php 
+              endforeach;
+            ?>
+          </div>
+          <div class="projects-row">
+            <span class="projects-row__title">Link: <a href="<?php echo $project['website']; ?>" target='_blank'><?php echo $project['website']; ?></a></span>
+            
+          </div>
+          <p class='projects__par'><?php echo $project['info']; ?></p>
+          <div class="projects-contact">
+            <h4 class="projects-contact__title">Contact person</h4>
+            <p class="projects-contact__par">
+              <?php echo $project['contact_person']['full_name']; ?><br />
+              <a href="mailto:<?php echo $project['contact_person']['email']; ?>"><?php echo $project['contact_person']['email']; ?></a><br />
+              <a href="tel:<?php echo $project['contact_person']['phone_number']; ?>"><?php echo $project['contact_person']['phone_number']; ?></a>
+            </p>
+          </div>
+        </article>
+      <?php 
+        endforeach;
+      ?>
     </div>
   </section>
 </div>
