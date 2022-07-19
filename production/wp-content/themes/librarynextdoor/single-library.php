@@ -4,35 +4,6 @@ get_header();
 
 global $wp;
 
-/* 
- 
-            Array
-            (
-                [0] => Array
-                    (
-                        [title] => Projekct první
-                        [website] => https://homolamartin.cz
-                        [contact_person] => Array
-                            (
-                                [full_name] => Martin Homola
-                                [email] => me@homolamartin.cz
-                                [phone_number] => +420727181921
-                            )
-            
-                        [topics] => Array
-                            (
-                                [0] => Kids
-                                [1] => Robotika
-                                [2] => Programování
-                            )
-            
-                        [info] => Toto je nový projekt
-                    )
-            
-            )
-            
-*/
-
 $projects = get_field('projects');
 $title = get_the_title();
 $content = get_the_content();
@@ -56,15 +27,15 @@ foreach ($projects as $project) {
   <section class="intro">
     <div class="inner intro__inner">
       <h1 class="heading"><?php the_title(); ?></h1>
-      <div class="intro-tags">
+      <ul class="intro-tags">
         <?php 
           foreach ($topics as $topic):
         ?>
-        <div class="tag tag--big"><?php echo $topic; ?></div>
+        <li class="tag tag--big"><?php echo $topic; ?></li>
         <?php 
           endforeach;
         ?>
-      </div>
+      </ul>
       <div class="intro__par">
         City size: <?php echo $citySize; ?><br />
         Type: <?php echo $type; ?><br />

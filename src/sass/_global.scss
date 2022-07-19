@@ -180,12 +180,21 @@ img {
   }
 
   .button-wrap {
-    margin-top: -20px;
+    margin-top: 5px;
   }
 
   .button {
     font-size: 1.5rem;
     padding: 7px 20px;
+  }
+
+  .map__button {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;
+    color: $white-alfa;
+    font-size: 1.7rem;
   }
 }
 

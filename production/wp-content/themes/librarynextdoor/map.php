@@ -24,7 +24,9 @@ the_post();
     </section>
 
     <div id="uvod" class="hero-section wf-section">
-      <div class='map' id="map"></div>
+      <div class='map' id="map">
+        <a class="button map__button" href="<?php the_permalink(285); ?>">Create new library</a>
+      </div>
     </div>
 
     <div class="inner projects-inner">

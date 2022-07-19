@@ -9,6 +9,7 @@ function enqueue_styles() {
     if ( !is_admin() ) {
         wp_enqueue_style('map-plugin',  'https://unpkg.com/leaflet@1.8.0/dist/leaflet.css', [], version, 'all');
         wp_enqueue_style('style', get_stylesheet_directory_uri() . '/assets/css/style.css', [], version, 'all');
+        wp_enqueue_style('print', get_stylesheet_directory_uri() . '/assets/css/print.css', [], version, 'print');
     }
 }
 add_action( 'wp_enqueue_scripts', 'enqueue_styles');
